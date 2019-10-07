@@ -170,6 +170,7 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
 
     private class DLLIterator implements Iterator<E> {
 
+
         private Node current = first.next;
         private Node lastAccessed = null;
         private int index = 0;
