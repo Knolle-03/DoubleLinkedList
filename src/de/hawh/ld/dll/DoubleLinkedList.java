@@ -72,13 +72,14 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
     @Override
     public void removeFirstOccurrence(E e) {
         DLLIterator it = new DLLIterator();
-        while (it.hasNext())
+        while (it.hasNext()) {
             if (it.current.data != e) {
                 it.next();
             } else {
                 it.removeNode();
+                break;
             }
-
+        }
 
 
 //        if (isEmpty()) throw new IndexOutOfBoundsException();
@@ -170,43 +171,22 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
 
     private class DLLIterator implements Iterator<E> {
 
-
         private Node current = first.next;
-        private Node lastAccessed = null;
         private int index = 0;
 
         public boolean hasNext() {
             return index < size;
         }
 
-        public boolean hasPrev() {
-            return index > 0;
-        }
-
-        public int prevIndex() {
-            return index - 1;
-        }
-
-        public int nextIndex() {
-            return index + 1;
-        }
 
         public E next() {
             if (!hasNext()) throw new IndexOutOfBoundsException();
-            lastAccessed = current;
             E e = current.data;
             current = current.next;
             index++;
             return e;
         }
 
-        public E prev() {
-            if(!hasPrev()) throw new IndexOutOfBoundsException();
-            current = current.prev;
-            index--;
-            lastAccessed = current;
-            return current.data;
-        }
 
         public void traverseNodes(int i){
             while (i > index){

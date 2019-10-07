@@ -91,12 +91,12 @@ public class DoubleLinkedListTest {
     }
 
     @Test
-    public void testRemoveAt() {
-        intDLL.removeAt(2);
-        assertEquals(6, intDLL.size());
-        assertFalse(intDLL.includes(3));
-        strDLL.removeAt(1);
-        assertEquals(6, strDLL.size());
+    public void testRemoveFirstOccurrence() {
+        intDLL.removeFirstOccurrence(2);
+        assertEquals(5, intDLL.size());
+        assertFalse(intDLL.includes(2));
+        strDLL.removeFirstOccurrence("e");
+        assertEquals(5, strDLL.size());
         assertFalse(strDLL.includes("e"));
 
         assertThrows(IndexOutOfBoundsException.class, () -> emptyDLL.deleteAt(2));
