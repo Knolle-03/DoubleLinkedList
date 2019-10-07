@@ -225,31 +225,6 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
         }
         return "DLL data: " + dataString.toString();
     }
-
-    public static void main(String[] args) {
-        DoubleLinkedList<Integer> dll = new DoubleLinkedList<>();
-        DoubleLinkedList<Integer> dll2 = new DoubleLinkedList<>();
-        DoubleLinkedList<Integer> dll3 = new DoubleLinkedList<>();
-        DoubleLinkedList<Integer> dll4 = new DoubleLinkedList<>();
-
-
-
-
-        for (int i = 0; i < 400000; i++) {
-            dll.add(StdRandom.uniform(100));
-
-        }
-        System.out.println(dll);
-        StdOut.println();
-
-
-
-
-
-
-    }
-
-
 }
 
 
