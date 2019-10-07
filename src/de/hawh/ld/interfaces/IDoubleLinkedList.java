@@ -8,7 +8,7 @@ public interface IDoubleLinkedList<E> {
     E deleteFirst();
     E deleteLast();
     E deleteAt(int i);
-    E removeAt(int i);
+    void removeFirstOccurrence(E e);
     void addAt(int i, E e);
     boolean includes(E e);
     E readAt(int i);

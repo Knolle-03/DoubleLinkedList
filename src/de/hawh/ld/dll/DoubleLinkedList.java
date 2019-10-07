@@ -64,24 +64,30 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
         if (isEmpty()) throw new IndexOutOfBoundsException();
         DLLIterator it = new DLLIterator();
         it.traverseNodes(i);
-        Node oldNext = it.current.next;
-        Node oldPrev = it.current.prev;
-        oldNext.prev = oldPrev;
-        oldPrev.next = oldNext;
-        size--;
+        it.removeNode();
 
         return it.current.data;
     }
 
     @Override
-    public E removeAt(int i) {
-        if (isEmpty()) throw new IndexOutOfBoundsException();
-        DLLIterator it  = new DLLIterator();
-        it.traverseNodes(i);
-        E deletedNodeData = it.current.data;
-        it.current.data = null;
+    public void removeFirstOccurrence(E e) {
+        DLLIterator it = new DLLIterator();
+        while (it.hasNext())
+            if (it.current.data != e) {
+                it.next();
+            } else {
+                it.removeNode();
+            }
 
-        return deletedNodeData;
+
+
+//        if (isEmpty()) throw new IndexOutOfBoundsException();
+//        DLLIterator it  = new DLLIterator();
+//        it.traverseNodes(i);
+//        E deletedNodeData = it.current.data;
+//        it.current.data = null;
+//
+//        return deletedNodeData;
     }
 
     @Override
@@ -212,8 +218,15 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
             if (current.data != e) {
                 next();
             } else return true;
-
             return false;
+        }
+
+        public void removeNode(){
+            Node oldNext = current.next;
+            Node oldPrev = current.prev;
+            oldNext.prev = oldPrev;
+            oldPrev.next = oldNext;
+            size--;
         }
 
     }
@@ -243,7 +256,6 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
 
         for (int i = 0; i < 400000; i++) {
             dll.add(StdRandom.uniform(100));
-            System.out.println(RandomSeq.main(5, 100.0, 200.0););
 
         }
         System.out.println(dll);
