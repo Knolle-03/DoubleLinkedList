@@ -22,6 +22,8 @@ public class Performance {
             dll2.add(StdRandom.uniform(10_000_000));
 
         }
+        System.out.println(dll);
+        System.out.println(dll.size());
 
         System.out.println("addAt");
 
@@ -30,7 +32,7 @@ public class Performance {
             for (int i = 0; i < repOp; i++) {
                 dll.addAt(StdRandom.uniform(N - 1), StdRandom.uniform(10_000_000));
             }
-            System.out.printf("%d | %f | %f \n", repOp, stopwatch.elapsedTime(), stopwatch.elapsedTime()/repOp);
+            System.out.printf("%d | %4.2f | %4.2f \n", repOp, stopwatch.elapsedTime(), stopwatch.elapsedTime()/repOp);
         }
 
         System.out.println("deleteAt");
@@ -40,7 +42,7 @@ public class Performance {
             for (int i = 0; i < repOp; i++) {
                 dll.deleteAt(StdRandom.uniform(N - repOp - 1));
             }
-            System.out.printf("%d | %f | %f \n", repOp, stopwatch.elapsedTime(), stopwatch.elapsedTime()/repOp);
+            System.out.printf("%d | %4.2f | %4.2f \n", repOp, stopwatch.elapsedTime(), stopwatch.elapsedTime()/repOp);
         }
 
         System.out.println("includes");
@@ -50,7 +52,7 @@ public class Performance {
             for (int i = 0; i < repOp; i++) {
                 dll2.includes(StdRandom.uniform(10_000_000));
             }
-            System.out.printf("%d | %10f | %f \n", repOp, stopwatch.elapsedTime(), stopwatch.elapsedTime()/repOp);
+            System.out.printf("%d | %4.2f | %4.2f \n", repOp, stopwatch.elapsedTime(), stopwatch.elapsedTime()/repOp);
         }
 
         System.out.println("removeFirstOccurrence");
@@ -60,7 +62,17 @@ public class Performance {
             for (int i = 0; i < repOp; i++) {
                 dll2.removeFirstOccurrence(StdRandom.uniform(10_000_000));
             }
-            System.out.printf("%d | %f | %f \n", repOp, stopwatch.elapsedTime(), stopwatch.elapsedTime()/repOp);
+            System.out.printf("%d | %4.2f | %4.2f \n", repOp, stopwatch.elapsedTime(), stopwatch.elapsedTime()/repOp);
+        }
+
+        System.out.println("removeAllOccurrences");
+
+        for (int j = 0; j < repEx; j++) {
+            Stopwatch stopwatch = new Stopwatch();
+            for (int i = 0; i < repOp; i++) {
+                dll2.removeAllOccurrences(StdRandom.uniform(10_000_000));
+            }
+            System.out.printf("%d | %4.2f | %4.2f \n", repOp, stopwatch.elapsedTime(), stopwatch.elapsedTime()/repOp);
         }
     }
 }

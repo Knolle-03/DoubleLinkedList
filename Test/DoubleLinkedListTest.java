@@ -103,6 +103,13 @@ public class DoubleLinkedListTest {
     }
 
     @Test
+    public void testRemoveAllOccurrences() {
+        strDLL.removeAllOccurrences("l");
+        System.out.println(strDLL);
+        assertFalse(strDLL.includes("l"));
+    }
+
+    @Test
     public void testAddAt() {
         intDLL.addAt(2, 42);
         assertEquals(7, intDLL.size());
@@ -136,8 +143,6 @@ public class DoubleLinkedListTest {
         assertEquals(3, intDLL.readAt(2));
         assertEquals("e", strDLL.readAt(1));
         assertThrows(IndexOutOfBoundsException.class, () -> emptyDLL.readAt(2));
-
-
     }
 
     @Test

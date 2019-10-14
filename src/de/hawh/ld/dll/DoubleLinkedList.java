@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import de.hawh.ld.interfaces.IDoubleLinkedList;
-import edu.princeton.cs.algs4.*;
+
 
 
 public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
@@ -80,15 +80,21 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
                 break;
             }
         }
+    }
 
 
-//        if (isEmpty()) throw new IndexOutOfBoundsException();
-//        DLLIterator it  = new DLLIterator();
-//        it.traverseNodes(i);
-//        E deletedNodeData = it.current.data;
-//        it.current.data = null;
-//
-//        return deletedNodeData;
+    public void removeAllOccurrences(E e) {
+        DLLIterator it = new DLLIterator();
+        while (it.hasNext()) {
+            if(it.current.data != e) {
+                it.next();
+            } else {
+                it.removeNode();
+            }
+        }
+        if(it.current.data == e) {
+            it.removeNode();
+        }
     }
 
     @Override
@@ -169,6 +175,17 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
         return new DLLIterator();
     }
 
+
+
+
+
+
+
+
+
+
+
+
     private class DLLIterator implements Iterator<E> {
 
         private Node current = first.next;
@@ -205,11 +222,14 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
         public void removeNode(){
             Node oldNext = current.next;
             Node oldPrev = current.prev;
+            if (hasNext()){
+                next();
+            }
             oldNext.prev = oldPrev;
             oldPrev.next = oldNext;
             size--;
+            index--;
         }
-
     }
 
 
