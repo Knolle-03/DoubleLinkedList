@@ -205,13 +205,13 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
         }
 
 
-        public void traverseNodes(int i){
+        void traverseNodes(int i){
             while (i > index){
                 next();
             }
         }
 
-        public boolean traverseNodes(E e) {
+        boolean traverseNodes(E e) {
             while (hasNext())
             if (current.data != e) {
                 next();
@@ -219,7 +219,7 @@ public class DoubleLinkedList<E> implements IDoubleLinkedList<E>, Iterable<E> {
             return false;
         }
 
-        public void removeNode(){
+        void removeNode(){
             Node oldNext = current.next;
             Node oldPrev = current.prev;
             if (hasNext()){
